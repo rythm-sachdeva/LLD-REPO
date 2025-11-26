@@ -1,4 +1,25 @@
 
+public class Main {
+public static void main(String[] args){
+     
+    PaymentProcessor processor = new UpiPayment();
+    CheckoutService modernCheckout = new CheckoutService(processor);
+
+    System.out.println("----Modern Checkout Service----");
+    modernCheckout.checkout(199.99,"USD");
+
+
+    System.out.println("---Using Legacy Gateway Payment---");
+    LegacyGateway legacyGateway = new LegacyGateway();
+    processor= new LegacyGatewayAdapter(legacyGateway);
+    CheckoutService legacyCheckout = new CheckoutService(processor);
+    legacyCheckout.checkout(75.55,"USD");
+}
+}
+
+
+
+
 interface PaymentProcessor{
       public void processPayment(double amount,String currency);
       public String getTransactionStatus();
@@ -82,20 +103,4 @@ class LegacyGatewayAdapter implements PaymentProcessor {
 }
 
 
-public class Main {
-public static void main(String[] args){
-     
-    PaymentProcessor processor = new UpiPayment();
-    CheckoutService modernCheckout = new CheckoutService(processor);
 
-    System.out.println("----Modern Checkout Service----");
-    modernCheckout.checkout(199.99,"USD");
-
-
-    System.out.println("---Using Legacy Gateway Payment---");
-    LegacyGateway legacyGateway = new LegacyGateway();
-    processor= new LegacyGatewayAdapter(legacyGateway);
-    CheckoutService legacyCheckout = new CheckoutService(processor);
-    legacyCheckout.checkout(75.55,"USD");
-}
-}
