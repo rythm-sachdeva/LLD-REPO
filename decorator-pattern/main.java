@@ -9,9 +9,7 @@ public class main{
         boldText.render();
         System.out.println("\n\nItalic and Underlined Text:");
         TextView italicUnderlineText = new ItalicTextDecorator(new UnderlineTextDecorator(PlainText));
-        italicUnderlineText.render();
-        
-    }
+        italicUnderlineText.render();}
 }
 
 interface TextView{
