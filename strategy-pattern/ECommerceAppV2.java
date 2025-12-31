@@ -1,6 +1,4 @@
 
-
-
 public class ECommerceAppV2 {
     public static void main(String[] args) {
         Order order1 = new Order();
